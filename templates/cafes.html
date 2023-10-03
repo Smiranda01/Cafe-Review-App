@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cafe Rating</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="title">All Cafes</h1>
+          <table class="table cafes-table">
+              <thead>
+                <tr>
+                  {% for field in cafes[0]: %}
+                  <th scope="col">{{ field }}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                  {% for cafe in cafes[1:]: %}
+                      <tr>
+                          <th scope="row">{{ cafe[0] }}</th>
+                          <td><a href="{{ cafe[1] }}" target="_blank" >Maps Link</a></td>
+                          <td>{{ cafe[2] }}</td>
+                          <td>{{ cafe[3] }}</td>
+                          <td>{{ cafe[4] }}</td>
+                          <td>{{ cafe[5] }}</td>
+                          <td>{{ cafe[6] }}</td>
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          <p><a href="{{ url_for('home') }}" class="btn btn-outline-warning btn-lg btn-go-back">Go Back</a></p>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>
+
